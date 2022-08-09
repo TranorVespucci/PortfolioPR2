@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_executable(${PROJECT_NAME} main.cpp)
+add_executable(${PROJECT_NAME} main.cpp TileMap/Map.cpp TileMap/Map.h Player/Char.cpp Player/Char.h Player/PC.cpp Player/PC.h)
 
 # Add config.h.in file
 configure_file(config.h.in config.h)
