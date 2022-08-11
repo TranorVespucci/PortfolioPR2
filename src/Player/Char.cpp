@@ -6,20 +6,24 @@
 
 Char::Char() = default;
 
-void Char::Draw(float x, float y) {
+void Char::Draw() {
 
 }
 
 Char::~Char() = default;
 
-int Char::GetXPosition() {
+float Char::GetXPosition() {
     return Position.x;
 }
 
-int Char::GetYPosition() {
+float Char::GetYPosition() {
     return Position.y;
 }
 
-void Char::Draw(Vector2 position) {
+void Char::Update() {
 
+}
+
+Texture2D Char::GetTexture() {
+    return Texture2D();
 }

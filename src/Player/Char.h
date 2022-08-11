@@ -9,11 +9,12 @@ class Char{
 public:
 
     Char();
-    virtual void Draw(float x, float y);
+    virtual void Draw();
+    virtual void Update();
 
-    virtual void Draw(Vector2 position);
-    virtual int GetXPosition();
-    virtual int GetYPosition();
+    virtual float GetXPosition();
+    virtual float GetYPosition();
+    virtual Texture2D GetTexture();
     ~Char();
 
 protected:

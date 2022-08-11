@@ -37,6 +37,12 @@ Map::Map()
     y = 0;
 
     LoadMap(Path);
+
+    for (int i = 0; i < 5; i++)
+    {
+        water = std::make_shared<Water>();
+        i_water.push_back(water);
+    }
 }
 
 void Map::LoadMap(int arr[20][25])
@@ -51,6 +57,11 @@ void Map::LoadMap(int arr[20][25])
 }
 
 void Map::DrawMap() {
+
+    for (const auto& water : this->i_water)
+    {
+        water->Draw();
+    }
 
     int type = 0;
 
@@ -75,12 +86,6 @@ void Map::DrawMap() {
                    DrawTextureRec(T_map, T_StartRec, {(float)x, (float)y}, WHITE);
 
                     T_StartRec.x = (float) currentStartFrame * (float) T_map.width / 23;
-
-                    s_rec = {(float) x, (float)y, 16, 16};
-
-                    s_start = {(float) x, (float) y};
-
-                    pc->Draw(s_start);
 
                     break;
 

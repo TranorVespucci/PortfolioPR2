@@ -3,23 +3,48 @@
 //
 
 #include "PC.h"
+#include <iostream>
 
 PC::PC() = default;
 
 PC::~PC() = default;
 
-/*void PC::Draw(float x, float y) {
-}*/
-
-
-void PC::Draw(Vector2 position) {
-    DrawTextureRec(pc,playerrec, position, WHITE);
+void PC::Draw() {
+    //DrawTexture(pc,playerrec.x,playerrec.y,WHITE);
+    playerrec = {0, 0, 16, 16 };
+    DrawTextureRec(pc,playerrec,playerposition, WHITE);
 }
 
-int PC::GetXPosition() {
-    return playerrec.x;
+float PC::GetXPosition() {
+    return playerposition.x;
 }
 
-int PC::GetYPosition() {
-    return playerrec.y;
+float PC::GetYPosition() {
+    return playerposition.y;
+}
+
+void PC::Update() {
+    if (IsKeyPressed(KEY_W))
+    {
+        playerposition.y -= speed;
+    }
+
+    if (IsKeyPressed(KEY_S))
+    {
+        playerposition.y += speed;
+    }
+
+    if (IsKeyPressed(KEY_A))
+    {
+        playerposition.x -=  speed;
+    }
+
+    if  (IsKeyPressed(KEY_D))
+    {
+        playerposition.x += speed;
+    }
+}
+
+Texture2D PC::GetTexture() {
+    return pc;
 }

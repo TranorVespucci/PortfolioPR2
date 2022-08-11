@@ -4,6 +4,7 @@
 #include "raylib.h"
 #include <vector>
 #include "../Player/PC.h"
+#include "../Item/Water.h"
 #include <memory>
 
 class Map {
@@ -12,6 +13,8 @@ public:
     //Constructor
     Map();
     std::unique_ptr<Char> pc = std::make_unique<PC>();
+    std::shared_ptr<Water> water = std::make_shared<Water>();
+    std::vector<std::shared_ptr<Water>> i_water;
     //Inside the Load Map is what is drawn in it
     void LoadMap(int arr[20][25]);
     //Calling this Method to draw the Map
