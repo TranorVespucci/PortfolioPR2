@@ -10,18 +10,11 @@ PC::PC() = default;
 PC::~PC() = default;
 
 void PC::Draw() {
-    //DrawTexture(pc,playerrec.x,playerrec.y,WHITE);
-    playerrec = {0, 0, 16, 16 };
+    playerrec = {playerposition.x, playerposition.y, 16, 16 };
     DrawTextureRec(pc,playerrec,playerposition, WHITE);
+    //DrawRectangleRec(playerrec, RED);
 }
 
-float PC::GetXPosition() {
-    return playerposition.x;
-}
-
-float PC::GetYPosition() {
-    return playerposition.y;
-}
 
 void PC::Update() {
     if (IsKeyPressed(KEY_W))
@@ -43,8 +36,22 @@ void PC::Update() {
     {
         playerposition.x += speed;
     }
+
+    if (IsKeyPressed(KEY_Q))
+    {
+        std::cout << playerposition.x << "\n";
+        std::cout << playerposition.y << "\n";
+    }
 }
 
 Texture2D PC::GetTexture() {
     return pc;
+}
+
+Vector2 PC::GetPositionVec() {
+    return Vector2();
+}
+
+void PC::SetPositionVec(Vector2 position) {
+    playerposition = position;
 }

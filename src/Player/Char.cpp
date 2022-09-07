@@ -12,14 +12,6 @@ void Char::Draw() {
 
 Char::~Char() = default;
 
-float Char::GetXPosition() {
-    return Position.x;
-}
-
-float Char::GetYPosition() {
-    return Position.y;
-}
-
 void Char::Update() {
 
 }
@@ -27,3 +19,12 @@ void Char::Update() {
 Texture2D Char::GetTexture() {
     return Texture2D();
 }
+
+Vector2 Char::GetPositionVec() {
+    return Position;
+}
+
+void Char::SetPositionVec(Vector2 position) {
+
+}
+

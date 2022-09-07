@@ -12,9 +12,9 @@ public:
     virtual void Draw();
     virtual void Update();
 
-    virtual float GetXPosition();
-    virtual float GetYPosition();
     virtual Texture2D GetTexture();
+    virtual Vector2 GetPositionVec();
+    virtual void SetPositionVec(Vector2 position);
     ~Char();
 
 protected:
