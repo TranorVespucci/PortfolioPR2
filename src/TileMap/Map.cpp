@@ -97,6 +97,12 @@ void Map::DrawMap() {
             water->Draw();
         }
 
+        DrawRectangleRec(border1, RED);
+
+        if (CheckCollisionRecs(pc->GetPlayerRectangle(), border1))
+        {
+            pc->GetDownCollision();
+        }
     }
 
 

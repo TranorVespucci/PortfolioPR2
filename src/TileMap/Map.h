@@ -39,5 +39,6 @@ private:
     Rectangle T_StartRec = {0, 32, 32, 16};
     int currentStartFrame = 5;
 
+    Rectangle border1 = {0, 320, 400, 16};
 
 };

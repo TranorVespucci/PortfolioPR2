@@ -15,6 +15,9 @@ public:
     virtual Texture2D GetTexture();
     virtual Vector2 GetPositionVec();
     virtual void SetPositionVec(Vector2 position);
+    virtual Rectangle GetPlayerRectangle();
+    virtual float GetSpeed();
+    virtual float GetDownCollision();
     ~Char();
 
 protected:

@@ -28,3 +28,15 @@ void Char::SetPositionVec(Vector2 position) {
 
 }
 
+Rectangle Char::GetPlayerRectangle() {
+    return Rectangle();
+}
+
+float Char::GetSpeed() {
+    return 0;
+}
+
+float Char::GetDownCollision() {
+    return 0;
+}
+

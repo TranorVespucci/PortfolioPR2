@@ -11,8 +11,10 @@ PC::~PC() = default;
 
 void PC::Draw() {
     playerrec = {playerposition.x, playerposition.y, 16, 16 };
+    DrawRectangleRec(playerrec, Color{});
     DrawTextureRec(pc,playerrec,playerposition, WHITE);
-    //DrawRectangleRec(playerrec, RED);
+    playerrec.x = (float)currentFrame * (float)pc.width / 2;
+
 }
 
 
@@ -29,7 +31,7 @@ void PC::Update() {
 
     if (IsKeyPressed(KEY_A))
     {
-        playerposition.x -=  speed;
+        playerposition.x -= speed;
     }
 
     if  (IsKeyPressed(KEY_D))
@@ -54,4 +56,17 @@ Vector2 PC::GetPositionVec() {
 
 void PC::SetPositionVec(Vector2 position) {
     playerposition = position;
+}
+
+Rectangle PC::GetPlayerRectangle() {
+    return playerrec;
+}
+
+float PC::GetSpeed() {
+    return speed;
+}
+
+float PC::GetDownCollision() {
+    playerposition.y -= 0.1;
+    //speed = 0;
 }
