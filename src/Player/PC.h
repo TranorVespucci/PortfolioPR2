@@ -3,6 +3,7 @@
 //
 
 #include "Char.h"
+#include "../Inventory/Inventory.h"
 #include <string>
 
 class PC: public Char{
@@ -13,17 +14,27 @@ public:
     Texture2D GetTexture() override;
     Vector2 GetPositionVec() override;
     void SetPositionVec(Vector2 position) override;
+    Rectangle GetPlayerRectangle() override;
+    virtual float GetSpeed();
+    float Collision() override;
     ~PC();
 
+    enum class Direction {UP, DOWN, LEFT, RIGHT};
+
+    Direction direction = Direction::UP;
+
+
 private:
+    Inventory<int> inventory;
     std::string pc_name;
-    float speed = 16;
-    int pc_maxWeight{};
-    int pc_HP{};
-    int pc_Str{};
-    Rectangle playerrec = {};
+    float speed = 1;
+
     Vector2 playerposition = {};
     Texture2D pc = LoadTexture("assets/graphics/PC.png");
+
+    Rectangle framerec = { 0.0f, 0.0f, (float)pc.width, (float)pc.height};
+    int currentFrame = 0;
+    Rectangle playerrec = {};
 };
 
 

@@ -45,7 +45,6 @@ int main() {
         // Updates that are made by frame are coded here
         // ...
         // ...
-        //pc->Update();
 
         Inventory<int> i(23, 22);
 
@@ -57,7 +56,7 @@ int main() {
 
             tilemap->DrawMap();
             water->Draw();
-            ClearBackground(WHITE);
+            ClearBackground(DARKGREEN);
 
         EndDrawing();
     } // Main game loop end

@@ -5,42 +5,55 @@
 #include "PC.h"
 #include <iostream>
 
-PC::PC() = default;
+PC::PC() : Char(50, 60, 7) {
+
+}
 
 PC::~PC() = default;
 
 void PC::Draw() {
     playerrec = {playerposition.x, playerposition.y, 16, 16 };
-    DrawTextureRec(pc,playerrec,playerposition, WHITE);
-    //DrawRectangleRec(playerrec, RED);
+    DrawRectangleRec(playerrec, Color {});
+    DrawTextureRec(pc,framerec,playerposition, WHITE);
+    playerrec.x = (float)currentFrame * (float)pc.width / 2;
+
 }
 
 
 void PC::Update() {
-    if (IsKeyPressed(KEY_W))
+
+    if (IsKeyDown(KEY_W))
     {
+        direction = Direction::UP;
         playerposition.y -= speed;
     }
 
-    if (IsKeyPressed(KEY_S))
+    if (IsKeyDown(KEY_S))
     {
+        direction = Direction::DOWN;
         playerposition.y += speed;
     }
 
-    if (IsKeyPressed(KEY_A))
+    if (IsKeyDown(KEY_A))
     {
-        playerposition.x -=  speed;
+        direction = Direction::LEFT;
+        playerposition.x -= speed;
     }
 
-    if  (IsKeyPressed(KEY_D))
+    if  (IsKeyDown(KEY_D))
     {
+        direction = Direction::RIGHT;
         playerposition.x += speed;
     }
 
     if (IsKeyPressed(KEY_Q))
     {
+        /*
         std::cout << playerposition.x << "\n";
-        std::cout << playerposition.y << "\n";
+        std::cout << playerposition.y << "\n";*/
+        inventory.AddItem(0);
+
+        std::cout << inventory.getSize() << "\n";
     }
 }
 
@@ -55,3 +68,31 @@ Vector2 PC::GetPositionVec() {
 void PC::SetPositionVec(Vector2 position) {
     playerposition = position;
 }
+
+Rectangle PC::GetPlayerRectangle() {
+    return {playerposition.x, playerposition.y, static_cast<float>(pc.width), static_cast<float>(pc.height)};
+}
+
+float PC::GetSpeed() {
+    return speed;
+}
+
+float PC::Collision() {
+    switch (direction)
+    {
+        case Direction::UP:
+            playerposition.y += 0.1;
+            break;
+        case Direction::DOWN:
+            playerposition.y -= 0.1;
+            break;
+        case Direction::LEFT:
+            playerposition.x += 0.1;
+            break;
+        case Direction::RIGHT:
+            playerposition.x -= 0.1;
+            break;
+    }
+}
+
+

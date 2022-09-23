@@ -1,31 +1,42 @@
 //
-// Created by goerk on 17.08.2022.
+// Created by user on 21.09.2022.
 //
 
-#include <array>
-#include <raylib.h>
+#ifndef RAYLIBSTARTER_INVENTORY_H
+#define RAYLIBSTARTER_INVENTORY_H
+#include <vector>
 #include <iostream>
+#include <cassert>
 
 template <class I>
+
 class Inventory {
-
-private:
-    I slots, maxSlots;
-
 public:
-    Inventory(I maxSize, I size)
+    Inventory()
     {
-        slots = size;
-        maxSlots = maxSize;
-
-        if (slots < maxSlots)
-        {
-            std::cout << "Error";
-        }
     }
 
-    void getSize(){std::cout << slots;}
+    bool AddItem(I ItemToBeAdded){
+        if (content.size() >= MaxSize){
+            return false;
+        }
+        else{content.push_back(ItemToBeAdded);}
+    }
+
+    I getSize()
+    {
+        return content.size();
+    }
 
 
+    ~Inventory()
+    {
+    }
 
+private:
+    std::vector<I> content;
+    int MaxSize = 10;
 };
+
+
+#endif //RAYLIBSTARTER_INVENTORY_H

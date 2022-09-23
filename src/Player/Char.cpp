@@ -4,7 +4,10 @@
 
 #include "Char.h"
 
-Char::Char() = default;
+Char::Char(int HP, int STR, int MaxWeight) : pc_HP(HP), pc_Str(STR), pc_maxWeight(MaxWeight) {
+
+}
+
 
 void Char::Draw() {
 
@@ -27,4 +30,17 @@ Vector2 Char::GetPositionVec() {
 void Char::SetPositionVec(Vector2 position) {
 
 }
+
+Rectangle Char::GetPlayerRectangle() {
+    return Rectangle();
+}
+
+float Char::GetSpeed() {
+    return 0;
+}
+
+float Char::Collision() {
+    return 0;
+}
+
 
