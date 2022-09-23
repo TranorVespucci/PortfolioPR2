@@ -11,8 +11,8 @@ public:
     void Draw() override;
     void Update() override;
     Texture2D GetTexture() override;
-    float GetXPosition() override;
-    float GetYPosition() override;
+    Vector2 GetPositionVec() override;
+    void SetPositionVec(Vector2 position) override;
     ~PC();
 
 private:

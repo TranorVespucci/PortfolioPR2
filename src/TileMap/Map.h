@@ -25,7 +25,7 @@ public:
 
 private:
     //x and y position for the Arrays
-    int x, y;
+    int x{}, y{};
 
     //First one is how many Arrays (20 Arrays) we can create with 25 Elements stored inside of it.
     int map[20][25]{};
