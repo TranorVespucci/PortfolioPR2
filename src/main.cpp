@@ -10,6 +10,8 @@
 
 #include "Player/Sprite.h"
 
+#include "Inventory/Inventory.h"
+
 int main() {
     // Raylib initialization
     // Project name, screen size, fullscreen mode etc. can be specified in the config.h.in file
@@ -44,6 +46,10 @@ int main() {
         // ...
         // ...
         pc->Update();
+
+        Inventory<int> i(23, 22);
+
+        i.getSize();
 
         BeginDrawing();
 
