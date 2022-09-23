@@ -10,6 +10,8 @@
 
 #include "Player/Sprite.h"
 
+#include "Inventory/Inventory.h"
+
 int main() {
     // Raylib initialization
     // Project name, screen size, fullscreen mode etc. can be specified in the config.h.in file
@@ -43,7 +45,6 @@ int main() {
         // Updates that are made by frame are coded here
         // ...
         // ...
-        //pc->Update();
 
         BeginDrawing();
 
@@ -51,7 +52,7 @@ int main() {
 
             tilemap->DrawMap();
             water->Draw();
-            ClearBackground(WHITE);
+            ClearBackground(DARKGREEN);
 
         EndDrawing();
     } // Main game loop end
