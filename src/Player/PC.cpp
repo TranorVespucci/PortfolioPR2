@@ -51,7 +51,6 @@ void PC::Update() {
         /*
         std::cout << playerposition.x << "\n";
         std::cout << playerposition.y << "\n";*/
-        inventory.AddItem(0);
 
         std::cout << inventory.getSize() << "\n";
     }
@@ -81,16 +80,16 @@ float PC::Collision() {
     switch (direction)
     {
         case Direction::UP:
-            playerposition.y += 0.1;
+            playerposition.y += 1;
             break;
         case Direction::DOWN:
-            playerposition.y -= 0.1;
+            playerposition.y -= 1;
             break;
         case Direction::LEFT:
-            playerposition.x += 0.1;
+            playerposition.x += 1;
             break;
         case Direction::RIGHT:
-            playerposition.x -= 0.1;
+            playerposition.x -= 1;
             break;
     }
 }

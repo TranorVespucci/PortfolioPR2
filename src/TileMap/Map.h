@@ -26,11 +26,13 @@ private:
     //x and y position for the Arrays
     int x{}, y{};
 
+    //Collision Bools
     bool wallCollision = false;
     bool wallCollision2 = false;
     bool wallCollision3 = false;
     bool wallCollision4 = false;
     bool StoneCollision = false;
+    bool GoalCollision = false;
 
     //First one is how many Arrays (20 Arrays) we can create with 25 Elements stored inside of it.
     int map[20][25]{};
@@ -39,6 +41,12 @@ private:
     Texture2D Spawn = LoadTexture("assets/graphics/stone_start.png");
     Texture2D Tree = LoadTexture("assets/graphics/Tree.png");
     Texture2D Stone = LoadTexture("assets/graphics/Stone.png");
+    Texture2D Goal = LoadTexture("assets/graphics/Finish.png");
+
+
+    //Goal
+    Rectangle goalrec = {};
+
 
     //T_Framerec is the Path One
     Rectangle T_frameRec = {0, 32, 16, 16};
@@ -47,6 +55,7 @@ private:
     Rectangle T_StartRec = {0, 32, 16, 16};
     int currentStartFrame = 1;
 
+    //Stone
     Rectangle Stonerrec = {};
 
     Rectangle border1 = {0, 320, 400, 16};

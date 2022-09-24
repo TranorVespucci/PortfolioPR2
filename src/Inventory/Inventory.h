@@ -28,6 +28,11 @@ public:
         return content.size();
     }
 
+    I setSize(I size)
+    {
+        size = MaxSize;
+    }
+
 
     ~Inventory()
     {
@@ -35,7 +40,7 @@ public:
 
 private:
     std::vector<I> content;
-    int MaxSize = 10;
+    I MaxSize = 10;
 };
 
 

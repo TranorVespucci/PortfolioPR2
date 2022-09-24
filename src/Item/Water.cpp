@@ -22,3 +22,7 @@ void Water::Draw() {
 
 
 }
+
+Rectangle Water::getRec() {
+    return waterrec;
+}

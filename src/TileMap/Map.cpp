@@ -6,7 +6,7 @@
 
 
 int Path[20][25] = {
-        {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+        {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
         { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
         { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
         { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
@@ -24,7 +24,7 @@ int Path[20][25] = {
         { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
         { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
         { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
-        { 2, 0, 3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 3, 0, 0, 0, 2 },
+        { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
         { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
 };
 
@@ -71,6 +71,9 @@ void Map::DrawMap() {
             x = column * 16;
             y = row * 16;
 
+            //Setting the Rectangles to X and Y, so that they stay at the Drawing Position.
+            T_StartRec.x = x;
+            T_StartRec.y = y;
             switch(type)
             {
                 case 0:
@@ -81,7 +84,7 @@ void Map::DrawMap() {
 
                 case 1:
                    DrawTextureRec(Spawn, T_StartRec, {(float)x, (float)y}, WHITE);
-                    DrawRectangleRec(T_StartRec, RED);
+                    //DrawRectangleRec(T_StartRec, RED);
 
                     T_StartRec.x = (float) currentStartFrame * (float) T_map.width / 23;
 
@@ -93,7 +96,15 @@ void Map::DrawMap() {
                     break;
 
                 case 3:
-                    DrawTexture(Stone, (float)x, (float)y, WHITE);
+                    Stonerrec = {(float)x, (float)y, 16, 16};
+                    DrawRectangleRec(Stonerrec, Color {});
+                    DrawTexture(Stone, Stonerrec.x, Stonerrec.y, WHITE);
+                    break;
+
+                case 4:
+                    goalrec = {(float)x, (float)y, 16, 16};
+                    //DrawRectangleRec(goalrec, RED);
+                    DrawTexture(Goal, goalrec.x, goalrec.y, WHITE);
                     break;
 
                 default:
@@ -119,11 +130,16 @@ void Map::DrawMap() {
         wallCollision2 = CheckCollisionRecs(border2, playerrectangle);
         wallCollision3 = CheckCollisionRecs(border3, playerrectangle);
         wallCollision4 = CheckCollisionRecs(border4, playerrectangle);
+        StoneCollision = CheckCollisionRecs(Stonerrec, playerrectangle);
+        GoalCollision = CheckCollisionRecs(goalrec, playerrectangle);
 
        if (wallCollision){pc->Collision(); }
        if (wallCollision2){pc->Collision(); }
        if (wallCollision3){pc->Collision(); }
        if (wallCollision4){pc->Collision(); }
+       if (StoneCollision){pc->Collision(); }
+       if (GoalCollision){CloseWindow();}
+
     }
 
 

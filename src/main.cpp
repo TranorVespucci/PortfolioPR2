@@ -46,9 +46,6 @@ int main() {
         // ...
         // ...
 
-        Inventory<int> i(23, 22);
-
-        i.getSize();
 
         BeginDrawing();
 

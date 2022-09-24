@@ -17,4 +17,8 @@ void ItemBase::Draw() {
 
 }
 
+Rectangle ItemBase::getRec() {
+    return Rectangle();
+}
+
 

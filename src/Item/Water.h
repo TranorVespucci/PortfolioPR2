@@ -9,6 +9,7 @@ class Water : public ItemBase {
 public:
     Water();
     void Draw() override;
+    Rectangle getRec() override;
     ~Water();
 
 private:
