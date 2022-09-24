@@ -14,7 +14,7 @@ public:
 
 private:
     Vector2 waterposition = {};
-    Texture2D water = LoadTexture("assets/graphics/chest_closed.png");
+    Texture2D water = LoadTexture("assets/graphics/spr_Water.png");
 
 
     Rectangle framerec = { 0.0f, 0.0f, (float)water.width, (float)water.height};

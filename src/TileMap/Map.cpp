@@ -112,7 +112,6 @@ void Map::DrawMap() {
 
             }
         }
-
         for (const auto& water : this->i_water)
         {
             water->Draw();

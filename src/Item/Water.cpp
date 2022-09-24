@@ -15,7 +15,7 @@ Water::~Water() {
 void Water::Draw() {
 
     waterrec = {waterposition.x, waterposition.y, 16, 16};
-    DrawRectangleRec(waterrec, Color{});
+    DrawRectangleRec(waterrec, RED);
     DrawTextureRec(water, framerec, waterposition, WHITE);
     waterrec.x = (float)currentFrame * (float)water.width / 2;
 

@@ -51,8 +51,6 @@ void PC::Update() {
         /*
         std::cout << playerposition.x << "\n";
         std::cout << playerposition.y << "\n";*/
-
-        std::cout << inventory.getSize() << "\n";
     }
 }
 

@@ -5,6 +5,7 @@
 #include <vector>
 #include "../Player/PC.h"
 #include "../Item/Water.h"
+#include "../Inventory/Inventory.h"
 #include <memory>
 #include <iostream>
 
@@ -23,6 +24,7 @@ public:
 
 
 private:
+    
     //x and y position for the Arrays
     int x{}, y{};
 
@@ -33,6 +35,7 @@ private:
     bool wallCollision4 = false;
     bool StoneCollision = false;
     bool GoalCollision = false;
+    bool itemCollision = false;
 
     //First one is how many Arrays (20 Arrays) we can create with 25 Elements stored inside of it.
     int map[20][25]{};

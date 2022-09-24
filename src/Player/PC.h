@@ -3,7 +3,6 @@
 //
 
 #include "Char.h"
-#include "../Inventory/Inventory.h"
 #include <string>
 
 class PC: public Char{
@@ -25,7 +24,6 @@ public:
 
 
 private:
-    Inventory<int> inventory;
     std::string pc_name;
     float speed = 1;
 
