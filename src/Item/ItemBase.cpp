@@ -21,4 +21,12 @@ Rectangle ItemBase::getRec() {
     return Rectangle();
 }
 
+Rectangle ItemBase::deleteRec() {
+    return Rectangle();
+}
+
+std::string ItemBase::getName() {
+    return name;
+}
+
 

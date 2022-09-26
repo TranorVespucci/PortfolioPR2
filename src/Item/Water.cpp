@@ -5,7 +5,9 @@
 #include "Water.h"
 
 Water::Water() : ItemBase("Bottle of Water", 3, 2, "British People love to ask for a Bottle of Water") {
-    waterposition = {(rand()%300 + 1), rand()%300 + 1};
+    waterposition = {static_cast<float>((rand()%300 + 1)), static_cast<float>(rand()%300 + 1)};
+    Type = WATER;
+    texture_ = LoadTexture("assets/graphics/spr_Water.png");
 }
 
 Water::~Water() {
@@ -15,7 +17,7 @@ Water::~Water() {
 void Water::Draw() {
 
     waterrec = {waterposition.x, waterposition.y, 16, 16};
-    DrawRectangleRec(waterrec, RED);
+    DrawRectangleRec(waterrec, Color{});
     DrawTextureRec(water, framerec, waterposition, WHITE);
     waterrec.x = (float)currentFrame * (float)water.width / 2;
 
@@ -24,5 +26,9 @@ void Water::Draw() {
 }
 
 Rectangle Water::getRec() {
-    return waterrec;
+   return {waterposition.x, waterposition.y, static_cast<float>(texture_.width), static_cast<float>(texture_.height)};
+}
+
+Rectangle Water::deleteRec() {
+  return {};
 }

@@ -1,9 +1,10 @@
 //
 // Created by goerk on 09.08.2022.
 //
-
+#pragma once
 #include "Char.h"
 #include <string>
+#include "../Inventory/Inventory.h"
 
 class PC: public Char{
 public:
@@ -24,6 +25,7 @@ public:
 
 
 private:
+    Inventory<ItemBase> inventory;
     std::string pc_name;
     float speed = 1;
 

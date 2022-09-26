@@ -1,7 +1,7 @@
 //
 // Created by goerk on 09.08.2022.
 //
-
+#pragma once
 #include <raylib.h>
 #include "../Inventory/Inventory.h"
 

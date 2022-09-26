@@ -59,7 +59,7 @@ Texture2D PC::GetTexture() {
 }
 
 Vector2 PC::GetPositionVec() {
-    return Vector2();
+    return {};
 }
 
 void PC::SetPositionVec(Vector2 position) {
