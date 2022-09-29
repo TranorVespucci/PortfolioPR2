@@ -10,6 +10,8 @@
 
 #include "Player/Sprite.h"
 
+#include "Inventory/Inventory.h"
+
 int main() {
     // Raylib initialization
     // Project name, screen size, fullscreen mode etc. can be specified in the config.h.in file
@@ -25,13 +27,10 @@ int main() {
     // ...
     std::unique_ptr<Map> tilemap = std::make_unique<Map>();
     Inventory<ItemBase> inventory;
-    //std::unique_ptr<Char> pc = std::make_unique<PC>();
-    //std::shared_ptr<Sprite> spr = std::make_shared<Sprite>(pc->GetPositionVec().x, pc->GetPositionVec().y, pc->GetTexture());
 
     // Camera settings
     //--------------------------------------------------------------------------------------------
     Camera2D camera = { 0 };
-    //camera.target   = Vector2 { static_cast<float>(pc->GetXPosition()), static_cast<float>(pc->GetYPosition())};
     camera.target   = Vector2 { Game::ScreenWidth/ 2.0f - 280, Game::ScreenHeight / 2.0f - 170};
     camera.offset   = Vector2 { Game::ScreenWidth / 2.0f, Game::ScreenHeight / 2.0f };
     camera.zoom     = 2.0f;
@@ -42,7 +41,6 @@ int main() {
         // Updates that are made by frame are coded here
         // ...
         // ...
-
 
         BeginDrawing();
 

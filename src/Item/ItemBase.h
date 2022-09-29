@@ -10,21 +10,26 @@ class ItemBase {
 public:
 
     itemType Type = ZERO;
+    EquipType E_Type = EMPTY;
     Texture2D texture_;
-    ItemBase(std::string i_name, int i_weight, int i_price, std::string i_description );
+    ItemBase(const char* i_name, int i_weight, int i_price, const char* i_description );
     virtual void Draw();
     virtual Rectangle getRec();
-    std::string getName();
+    const char *getName();
     virtual Rectangle deleteRec();
+    int getStrength();
+    int getweight();
+    const char *getdescription();
+    int getprice();
     bool Active = true;
-
     ~ItemBase();
-protected:
 
-    int Strength;
+
+protected:
     int weight;
-    std::string name;
-    std::string description;
+    int Strength;
+    const char *name;
+    const char *description;
     int price;
 };
 

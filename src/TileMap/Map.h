@@ -7,6 +7,8 @@
 #include "../Player/PC.h"
 #include "../Item/Water.h"
 #include "../Item/Chilli.h"
+#include "../Item/Milk.h"
+#include "../Item/Spamton.h"
 #include "../Inventory/Inventory.h"
 #include "../Enums/Enums.h"
 #include <memory>
@@ -20,11 +22,14 @@ public:
     std::unique_ptr<Char> pc = std::make_unique<PC>();
     std::shared_ptr<Water> water = std::make_shared<Water>();
     std::shared_ptr<Chilli> chilli = std::make_shared<Chilli>();
-    //std::vector<std::shared_ptr<Water>> i_water;
+    std::shared_ptr<Milk> milk = std::make_shared<Milk>();
+    std::shared_ptr<Pudding> pudding = std::make_shared<Pudding>();
+    std::shared_ptr<Spamton> spamton = std::make_shared<Spamton>();
     //Inside the Load Map is what is drawn in it
     void LoadMap(int arr[20][25]);
     //Calling this Method to draw the Map
     void DrawMap();
+    void WeightOverload();
     void Collision();
 
 private:
@@ -33,7 +38,6 @@ private:
     //x and y position for the Arrays
     int x{}, y{};
 
-
     //Collision Bools
     bool wallCollision = false;
     bool wallCollision2 = false;
@@ -41,9 +45,11 @@ private:
     bool wallCollision4 = false;
     bool StoneCollision = false;
     bool GoalCollision = false;
-    bool WaterActive = true;
     bool WaterDraw = true;
     bool ChilliDraw = true;
+    bool MilkDraw = true;
+    bool PuddingDraw = true;
+    bool SpamtonDraw = true;
 
     //First one is how many Arrays (20 Arrays) we can create with 25 Elements stored inside of it.
     int map[20][25]{};
@@ -66,6 +72,9 @@ private:
 
     //Stone
     std::vector<Rectangle> stonerecc = {};
+
+
+    int r = rand()%2;
 
     Rectangle border1 = {0, 320, 400, 16};
     Rectangle border2 = {0, 0, 16, 320};

@@ -11,6 +11,7 @@ public:
     Char(int HP, int STR, int MaxWeight);
     virtual void Draw();
     virtual void Update();
+    bool Active = true;
 
     virtual Texture2D GetTexture();
     virtual Vector2 GetPositionVec();
@@ -18,13 +19,14 @@ public:
     virtual Rectangle GetPlayerRectangle();
     virtual float GetSpeed();
     virtual float Collision();
+    int getMaxWeight();
     ~Char();
 
 protected:
     Vector2 Position = {};
-    int pc_maxWeight{};
-    int pc_HP{};
-    int pc_Str{};
+    int pc_maxWeight;
+    int pc_HP;
+    int pc_Str;
 
 };
 

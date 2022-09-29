@@ -5,7 +5,7 @@
 #include "PC.h"
 #include <iostream>
 
-PC::PC() : Char(50, 60, 7) {
+PC::PC() : Char(50, 60, 4) {
 
 }
 
@@ -22,36 +22,37 @@ void PC::Draw() {
 
 void PC::Update() {
 
-    if (IsKeyDown(KEY_W))
-    {
-        direction = Direction::UP;
-        playerposition.y -= speed;
+    // PLAYER MOVEMENT
+    if (Active) {
+        if (IsKeyDown(KEY_W)) {
+            direction = Direction::UP;
+            playerposition.y -= speed;
+        }
+
+        if (IsKeyDown(KEY_S)) {
+            direction = Direction::DOWN;
+            playerposition.y += speed;
+        }
+
+        if (IsKeyDown(KEY_A)) {
+            direction = Direction::LEFT;
+            playerposition.x -= speed;
+        }
+
+        if (IsKeyDown(KEY_D)) {
+            direction = Direction::RIGHT;
+            playerposition.x += speed;
+        }
+
+        if (IsKeyPressed(KEY_Q)) {
+            std::cout << playerposition.x << "\n";
+            std::cout << playerposition.y << "\n";
+
+        }
     }
 
-    if (IsKeyDown(KEY_S))
-    {
-        direction = Direction::DOWN;
-        playerposition.y += speed;
-    }
 
-    if (IsKeyDown(KEY_A))
-    {
-        direction = Direction::LEFT;
-        playerposition.x -= speed;
-    }
 
-    if  (IsKeyDown(KEY_D))
-    {
-        direction = Direction::RIGHT;
-        playerposition.x += speed;
-    }
-
-    if (IsKeyPressed(KEY_Q))
-    {
-        /*
-        std::cout << playerposition.x << "\n";
-        std::cout << playerposition.y << "\n";*/
-    }
 }
 
 Texture2D PC::GetTexture() {
@@ -75,6 +76,7 @@ float PC::GetSpeed() {
 }
 
 float PC::Collision() {
+    //IF PLAYER COLLIDES WITH OBJECT
     switch (direction)
     {
         case Direction::UP:
@@ -91,5 +93,6 @@ float PC::Collision() {
             break;
     }
 }
+
 
 

@@ -43,4 +43,10 @@ float Char::Collision() {
     return 0;
 }
 
+int Char::getMaxWeight() {
+    return pc_maxWeight;
+}
+
+
+
 

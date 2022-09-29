@@ -10,7 +10,6 @@
 
 class Chilli : public ItemBase {
 public:
-
     Chilli();
     void Draw() override;
     Rectangle getRec() override;

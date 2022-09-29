@@ -17,6 +17,7 @@ public:
     Rectangle GetPlayerRectangle() override;
     virtual float GetSpeed();
     float Collision() override;
+
     ~PC();
 
     enum class Direction {UP, DOWN, LEFT, RIGHT};
@@ -26,7 +27,7 @@ public:
 
 private:
     Inventory<ItemBase> inventory;
-    std::string pc_name;
+    const char* pc_name;
     float speed = 1;
 
     Vector2 playerposition = {};

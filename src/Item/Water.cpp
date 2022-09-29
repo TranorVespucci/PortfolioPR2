@@ -4,9 +4,10 @@
 
 #include "Water.h"
 
-Water::Water() : ItemBase("Bottle of Water", 3, 2, "British People love to ask for a Bottle of Water") {
+Water::Water() : ItemBase("Bottle of Water", 1, 2, "British People love to \nask for a Bottle of Water") {
     waterposition = {static_cast<float>((rand()%300 + 1)), static_cast<float>(rand()%300 + 1)};
     Type = WATER;
+    E_Type = ACCESSOIR;
     texture_ = LoadTexture("assets/graphics/spr_Water.png");
 }
 

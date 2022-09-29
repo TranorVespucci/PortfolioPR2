@@ -4,9 +4,10 @@
 
 #include "Chilli.h"
 
-Chilli::Chilli() : ItemBase("Chilli Boom Boom", 2, 4, "Eat it and your throat go Boom Boom :)") {
+Chilli::Chilli() : ItemBase("Chilli Boom Boom", 2, 4, "Eat it and your \nthroat go Boom Boom :)") {
     chilliposition = {static_cast<float>((rand()%300 + 1)), static_cast<float>(rand()%300 + 1)};
     Type = CHILLI;
+    E_Type = WEAPON;
     texture_ = LoadTexture("assets/graphics/spr_Chilli.png");
 }
 
