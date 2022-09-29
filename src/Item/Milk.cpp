@@ -4,7 +4,7 @@
 
 #include "Milk.h"
 
-Milk::Milk() : ItemBase("MOO MOO MILCH!!!!", 1, 5, "Certified Momy Milk. \nAnd I fucking love it! <3") {
+Milk::Milk() : ItemBase("MOO MOO MILCH!!!!", 3, 5, "Certified Momy Milk. \nAnd I fucking love it! <3") {
     milkposition = {static_cast<float>((rand()%300 + 1)), static_cast<float>(rand()%300 + 1)};
     Type = MILK;
     E_Type = ARMOR;

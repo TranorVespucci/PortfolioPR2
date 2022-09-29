@@ -4,7 +4,7 @@
 
 #include "Water.h"
 
-Water::Water() : ItemBase("Bottle of Water", 1, 2, "British People love to \nask for a Bottle of Water") {
+Water::Water() : ItemBase("Bottle of Water", 5, 2, "British People love to \nask for a Bottle of Water") {
     waterposition = {static_cast<float>((rand()%300 + 1)), static_cast<float>(rand()%300 + 1)};
     Type = WATER;
     E_Type = ACCESSOIR;

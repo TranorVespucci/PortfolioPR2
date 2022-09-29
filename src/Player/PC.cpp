@@ -5,7 +5,7 @@
 #include "PC.h"
 #include <iostream>
 
-PC::PC() : Char(50, 60, 4) {
+PC::PC() : Char(50, 60, 12) {
 
 }
 

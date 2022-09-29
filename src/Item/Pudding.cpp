@@ -4,7 +4,7 @@
 
 #include "Pudding.h"
 
-Pudding::Pudding() : ItemBase("Puddi pud Pud", 1, 2, "Kneel before Pudding or die") {
+Pudding::Pudding() : ItemBase("Puddi pud Pud", 4, 3, "Kneel before Pudding or die") {
     puddingposition = {static_cast<float>((rand()%300 + 1)), static_cast<float>(rand()%300 + 1)};
     Type = PUDDING;
     texture_ = LoadTexture("assets/graphics/spr_Pudding.png");
