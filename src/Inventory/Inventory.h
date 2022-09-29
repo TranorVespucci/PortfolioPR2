@@ -150,22 +150,21 @@ if (content.empty() == false) {
             if (IsKeyPressed(KEY_M)){
                 content.erase(content.cbegin()+i);
             }
-            if(IsKeyPressed(KEY_ENTER)){
-                EquipItem(i);
-            }
-            if (Weapon.empty() == false){
-                DrawTexture(Weapon[0].texture_, weaponrec.x,weaponrec.y, WHITE);
-            }
-
-            if (Armor.empty() == false){
-                DrawTexture(Armor[0].texture_, armorrec.x, armorrec.y, WHITE);
-            }
-
-            if (Accessoir.empty() == false){
-                DrawTexture(Accessoir[0].texture_, accessoirrec.x, accessoirrec.y, WHITE);
-            }
+        }
+        if(IsKeyPressed(KEY_ENTER)){
+            EquipItem(i);
+        }
+        if (Weapon.empty() == false){
+            DrawTexture(Weapon[0].texture_, weaponrec.x,weaponrec.y, WHITE);
         }
 
+        if (Armor.empty() == false){
+            DrawTexture(Armor[0].texture_, armorrec.x, armorrec.y, WHITE);
+        }
+
+        if (Accessoir.empty() == false){
+            DrawTexture(Accessoir[0].texture_, accessoirrec.x, accessoirrec.y, WHITE);
+        }
     }
 
 
@@ -199,22 +198,24 @@ if (content.empty() == false) {
             switch (content[Itemslot].E_Type) {
                 case WEAPON:
                     if (Weapon.size() < 1) {
+                        Weapon.push_back(content[Itemslot]);
                         content.erase(content.cbegin() + Itemslot);
-                        Weapon.push_back(EType);
+                        std::cout << Weapon.size() << "\n";
                         std::cout << "You Equipped a Weapon" << "\n";
+                        std::cout << Weapon[0].getName() << "\n";
                     }
                     break;
                 case ARMOR:
                     if (Armor.size() < 1) {
+                        Armor.push_back(content[Itemslot]);
                         content.erase(content.cbegin() + Itemslot);
-                        Armor.push_back(EType);
                         std::cout << "You Equipped a Armor" << "\n";
                     }
                     break;
                 case ACCESSOIR:
                     if (Accessoir.size() < 1) {
+                        Accessoir.push_back(content[Itemslot]);
                         content.erase(content.cbegin() + Itemslot);
-                        Accessoir.push_back(EType);
                         std::cout << "You Equipped a Accessoir" << "\n";
                     }
                     break;
