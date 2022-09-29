@@ -9,6 +9,7 @@
 class ItemBase {
 public:
 
+    ItemBase();
     itemType Type = ZERO;
     EquipType E_Type = EMPTY;
     Texture2D texture_;

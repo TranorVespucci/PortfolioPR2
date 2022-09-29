@@ -1,12 +1,9 @@
 //
 // Created by user on 25.09.2022.
 //
-
-#ifndef RAYLIBSTARTER_ENUMS_H
-#define RAYLIBSTARTER_ENUMS_H
-
+#pragma once
 enum itemType {ZERO, WATER, CHILLI, MILK, PUDDING, SPAMTON};
 
 enum EquipType {EMPTY, ACCESSOIR, WEAPON, ARMOR};
 
-#endif //RAYLIBSTARTER_ENUMS_H
+

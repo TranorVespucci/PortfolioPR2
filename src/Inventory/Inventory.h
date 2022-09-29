@@ -150,6 +150,16 @@ if (content.empty() == false) {
                 content.erase(content.cbegin()+i);
             }
 
+            //Sorting Inventory
+            if(IsKeyPressed(KEY_W)){
+                bubbleSortWeight();
+            }
+            if(IsKeyPressed(KEY_N)){
+                bubbleSortName();
+            }
+            if(IsKeyPressed(KEY_P)){
+                bubbleSortPrice();
+            }
 
         }
     }
@@ -164,11 +174,41 @@ if (content.empty() == false) {
     }
 
 //SORT ALGORITHM!!!!
-    void bubbleSort(std::vector<I> &sort){
-        for (size_t i = 0; i < sort.size() - 1; i++){
-            for(size_t j = 0; j < sort.size() - i - 1; j++){
-                if (sort.at(j) > sort.at(j + 1))
-                    std::swap(sort.at(j), sort.at(j + 1));
+    void bubbleSortWeight(){
+        I holder = I();
+        for (size_t i = 0; i < content.size() - 1; i++){
+            for(size_t j = 0; j < content.size() - i - 1; j++){
+                if (content[j].getweight() > content[j + 1].getweight()){
+                    holder = content[j];
+                    content[j] = content[j + 1];
+                    content[j + 1] = holder;
+                }
+            }
+        }
+    }
+
+    void bubbleSortName(){
+        I holder = I();
+        for (size_t i = 0; i < content.size() - 1; i++){
+            for(size_t j = 0; j < content.size() - i - 1; j++){
+                if (content[j].getName() > content[j + 1].getName()){
+                    holder = content[j];
+                    content[j] = content[j + 1];
+                    content[j + 1] = holder;
+                }
+            }
+        }
+    }
+
+    void bubbleSortPrice(){
+        I holder = I();
+        for (size_t i = 0; i < content.size() - 1; i++){
+            for(size_t j = 0; j < content.size() - i - 1; j++){
+                if (content[j].getprice() > content[j + 1].getprice()){
+                    holder = content[j];
+                    content[j] = content[j + 1];
+                    content[j + 1] = holder;
+                }
             }
         }
     }

@@ -3,6 +3,7 @@
 //
 
 #include "ItemBase.h"
+ItemBase::ItemBase() {}
 
 ItemBase::ItemBase(const char* i_name, int i_weight, int i_price, const char* i_description)
 : name(i_name), weight(i_weight), price(i_price), description(i_description){
