@@ -8,8 +8,6 @@
 
 #include <memory>
 
-#include "Player/Sprite.h"
-
 #include "Inventory/Inventory.h"
 
 int main() {
