@@ -178,47 +178,62 @@ void Map::Collision() {
     //ADDING THE ITEMS IN THE INVENTORY ARRAY
     if (water->Active) {
         if (CheckCollisionRecs(pc->GetPlayerRectangle(), water->getRec())) {
-            water->Active = false;
-            std::cout << "Collision" << "\n";
-            WaterDraw = false;
-            Water saskia;
-            inventory.AddItem(saskia);
+            DrawText("[ F ]", pc->GetPlayerRectangle().x - 2, pc->GetPlayerRectangle().y - 10, 1, BLACK);
+            if(IsKeyPressed(KEY_F)) {
+                water->Active = false;
+                std::cout << "Collision" << "\n";
+                WaterDraw = false;
+                Water saskia;
+                inventory.AddItem(saskia);
+            }
         }
     }
 
     if (chilli->Active){
         if (CheckCollisionRecs(pc->GetPlayerRectangle(), chilli->getRec())){
-            chilli->Active = false;
-            ChilliDraw = false;
-            Chilli Javier;
-            inventory.AddItem(Javier);
+            DrawText("[ F ]", pc->GetPlayerRectangle().x - 2, pc->GetPlayerRectangle().y - 10, 1, BLACK);
+            if(IsKeyPressed(KEY_F)) {
+                chilli->Active = false;
+                ChilliDraw = false;
+                Chilli Javier;
+                inventory.AddItem(Javier);
+            }
         }
     }
 
     if (milk->Active){
         if (CheckCollisionRecs(pc->GetPlayerRectangle(), milk->getRec())){
-            milk->Active = false;
-            MilkDraw = false;
-            Milk WillSmith;
-            inventory.AddItem(WillSmith);
+            DrawText("[ F ]", pc->GetPlayerRectangle().x - 2, pc->GetPlayerRectangle().y - 10, 1, BLACK);
+            if(IsKeyPressed(KEY_F)) {
+                milk->Active = false;
+                MilkDraw = false;
+                Milk WillSmith;
+                inventory.AddItem(WillSmith);
+            }
         }
     }
 
     if (pudding->Active){
         if (CheckCollisionRecs(pc->GetPlayerRectangle(), pudding->getRec())){
-            pudding->Active = false;
-            PuddingDraw = false;
-            Pudding Charlotte;
-            inventory.AddItem(Charlotte);
+            DrawText("[ F ]", pc->GetPlayerRectangle().x - 2, pc->GetPlayerRectangle().y - 10, 1, BLACK);
+            if(IsKeyPressed(KEY_F)) {
+                pudding->Active = false;
+                PuddingDraw = false;
+                Pudding Charlotte;
+                inventory.AddItem(Charlotte);
+            }
         }
     }
 
     if(spamton->Active){
         if (CheckCollisionRecs(pc->GetPlayerRectangle(), spamton->getRec())){
-            spamton->Active = false;
-            SpamtonDraw = false;
-            Spamton SpamtonNEO;
-            inventory.AddItem(SpamtonNEO);
+            DrawText("[ F ]", pc->GetPlayerRectangle().x - 2, pc->GetPlayerRectangle().y - 10, 1, BLACK);
+            if(IsKeyPressed(KEY_F)) {
+                spamton->Active = false;
+                SpamtonDraw = false;
+                Spamton SpamtonNEO;
+                inventory.AddItem(SpamtonNEO);
+            }
         }
     }
 }
