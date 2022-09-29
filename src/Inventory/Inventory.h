@@ -143,25 +143,43 @@ if (content.empty() == false) {
                          static_cast<float>(GetScreenHeight() / 2 - 210), 1, BLACK);
                 DrawText(TextFormat("%s", content[i].getdescription()), static_cast<float>(GetScreenHeight() / 2 - 105),
                          static_cast<float>(GetScreenHeight() / 2 - 200), 1, BLACK);
-            }
 
+
+            }
             //DISCARD ITEM PERMANETELY FROM THE GAME
             if (IsKeyPressed(KEY_M)){
                 content.erase(content.cbegin()+i);
             }
-
-            //Sorting Inventory
-            if(IsKeyPressed(KEY_W)){
-                bubbleSortWeight();
+            if(IsKeyPressed(KEY_ENTER)){
+                EquipItem(i);
             }
-            if(IsKeyPressed(KEY_N)){
-                bubbleSortName();
-            }
-            if(IsKeyPressed(KEY_P)){
-                bubbleSortPrice();
+            if (Weapon.empty() == false){
+                DrawTexture(Weapon[0].texture_, weaponrec.x,weaponrec.y, WHITE);
             }
 
+            if (Armor.empty() == false){
+                DrawTexture(Armor[0].texture_, armorrec.x, armorrec.y, WHITE);
+            }
+
+            if (Accessoir.empty() == false){
+                DrawTexture(Accessoir[0].texture_, accessoirrec.x, accessoirrec.y, WHITE);
+            }
         }
+
+    }
+
+
+
+
+    //Sorting Inventory
+    if(IsKeyPressed(KEY_W)){
+        bubbleSortWeight();
+    }
+    if(IsKeyPressed(KEY_N)){
+        bubbleSortName();
+    }
+    if(IsKeyPressed(KEY_P)){
+        bubbleSortPrice();
     }
 
 }
@@ -173,7 +191,41 @@ if (content.empty() == false) {
 
     }
 
-//SORT ALGORITHM!!!!
+    //===================================EQUIPING ITEM===========================================================
+
+    void EquipItem(int Itemslot){
+        I EType = I();
+        if (content.empty() == false) {
+            switch (content[Itemslot].E_Type) {
+                case WEAPON:
+                    if (Weapon.size() < 1) {
+                        content.erase(content.cbegin() + Itemslot);
+                        Weapon.push_back(EType);
+                        std::cout << "You Equipped a Weapon" << "\n";
+                    }
+                    break;
+                case ARMOR:
+                    if (Armor.size() < 1) {
+                        content.erase(content.cbegin() + Itemslot);
+                        Armor.push_back(EType);
+                        std::cout << "You Equipped a Armor" << "\n";
+                    }
+                    break;
+                case ACCESSOIR:
+                    if (Accessoir.size() < 1) {
+                        content.erase(content.cbegin() + Itemslot);
+                        Accessoir.push_back(EType);
+                        std::cout << "You Equipped a Accessoir" << "\n";
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+//=====================SORT ALGORITHM!!!!========================================================================
+
     void bubbleSortWeight(){
         I holder = I();
         for (size_t i = 0; i < content.size() - 1; i++){
@@ -212,8 +264,9 @@ if (content.empty() == false) {
             }
         }
     }
+//================================================================================================================
 
-    //CALCULATING OBJECT WEIGHT AND CALCULATING THE TOTAL WEIGHT IN THE INVENTORY
+//CALCULATING OBJECT WEIGHT AND CALCULATING THE TOTAL WEIGHT IN THE INVENTORY
     int getWeight(){
        inventoryweight = 0;
         for (int i = 0; i < content.size(); i++){

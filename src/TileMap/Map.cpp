@@ -234,11 +234,6 @@ void Map::WeightOverload()
         pc->Active = true;
     }
 
-    if (IsKeyPressed(KEY_ENTER)){
-        std::cout << "Inventory Weight: "<< inventory.getWeight() << "\n";
-        std::cout << "Player Weight: "<< pc->getMaxWeight() << "\n";
-    }
-
     if (inventory.getWeight() >= pc->getMaxWeight()){
         pc->Active = false;
     }
