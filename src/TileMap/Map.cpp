@@ -9,7 +9,7 @@ int Path[20][25] = {
 
         //THIS IS WHERE THE MAP IS DRAWN AND SET.
 
-        {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+        {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
         { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
         { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
         { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
@@ -28,7 +28,7 @@ int Path[20][25] = {
         { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
         { 2, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
         { 2, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
-        { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+        { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
 
 
 };
@@ -40,11 +40,19 @@ Map::Map()
 {
 
     LoadMap(Path);
+    //Procedural Goal Generation The Rectangle will be set on a random X VALUE
+    goalrec = {static_cast<float>(GetRandomValue(16, 368)), 0, 16, 16};
+    T_StartRec = {static_cast<float>(GetRandomValue(16, 368)), 304, 16, 16};
+    pc->SetPositionVec({T_StartRec.x, T_StartRec.y});
 
 }
 
 void Map::LoadMap(int arr[20][25])
 {
+    //Procedural Start Generation
+
+
+    /*
     for (int row = 0; row < 20; row++)
     {
         for (int column = 0; column < 25; column++)
@@ -58,7 +66,7 @@ void Map::LoadMap(int arr[20][25])
             }
 
         }
-    }
+    }*/
 
     for (int row = 0; row < 20; row++) {
         for (int column = 0; column < 25; column++) {
@@ -84,10 +92,6 @@ void Map::DrawMap() {
             x = column * 16;
             y = row * 16;
 
-            //Setting the Rectangles to X and Y, so that they stay at the Drawing Position.
-            T_StartRec.x = x;
-            T_StartRec.y = y;
-
             //SWITCH CASE TELLS, WHAT WILL BE DRAWN IN THE NUMBERS!!!
             switch (type) {
                 case 0:
@@ -101,22 +105,17 @@ void Map::DrawMap() {
 
                     break;
 
-
+/*
                 case 3:
                     DrawTextureRec(Spawn, T_StartRec, {(float) x, (float) y}, WHITE);
 
                     T_StartRec.x = (float) currentStartFrame * (float) T_map.width / 23;
 
-                    break;
+                    break;*/
 
                 case 2:
                     DrawTexture(Tree, (float) x, (float) y, WHITE);
 
-                    break;
-
-                case 4:
-                    goalrec = {(float) x, (float) y, 16, 16};
-                    DrawTexture(Goal, goalrec.x, goalrec.y, WHITE);
                     break;
 
                 default:
@@ -125,6 +124,9 @@ void Map::DrawMap() {
                }
         }
     }
+    DrawTexture(Goal, goalrec.x, goalrec.y, WHITE);
+    DrawTextureRec(Spawn, T_StartRec, {T_StartRec.x, T_StartRec.y}, WHITE);
+
 
     //DRAWING THE ITEMS IN THE MAP
     if (WaterDraw) {
@@ -153,6 +155,9 @@ void Map::DrawMap() {
 
 void Map::Collision() {
 
+    if (IsKeyPressed(KEY_R)){
+        std::cout << pc->GetPlayerRectangle().y;
+    }
 //SETTING THE COLLISIONS IN A BOOL VARIABLE TO MAKE THE TYPING EASIER
     Rectangle playerrectangle = pc->GetPlayerRectangle();
     wallCollision = CheckCollisionRecs(border1, playerrectangle);

@@ -97,12 +97,6 @@ public:
             accessoirrec = {static_cast<float>(GetScreenWidth() / 2 - 285), static_cast<float>(GetScreenHeight() / 2 - 225), 16, 16};
             weaponrec = {static_cast<float>(GetScreenWidth() / 2 - 320), static_cast<float>(GetScreenHeight() / 2 - 195), 16, 16};
 
-            /*
-            DrawRectangleRec(armorrec, YELLOW);
-            DrawRectangleRec(accessoirrec, YELLOW);
-            DrawRectangleRec(weaponrec, YELLOW);
-            */
-
             if(IsKeyPressed(KEY_D)){
                 box_rec.x += 40;
             }
