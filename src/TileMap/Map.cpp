@@ -40,8 +40,9 @@ Map::Map()
 {
 
     LoadMap(Path);
-    //Procedural Goal Generation The Rectangle will be set on a random X VALUE
+    //Random Goal Generation The Rectangle will be set on a random X VALUE
     goalrec = {static_cast<float>(GetRandomValue(16, 368)), 0, 16, 16};
+    //Random Start Generation
     T_StartRec = {static_cast<float>(GetRandomValue(16, 368)), 304, 16, 16};
     pc->SetPositionVec({T_StartRec.x, T_StartRec.y});
 
@@ -49,24 +50,6 @@ Map::Map()
 
 void Map::LoadMap(int arr[20][25])
 {
-    //Procedural Start Generation
-
-
-    /*
-    for (int row = 0; row < 20; row++)
-    {
-        for (int column = 0; column < 25; column++)
-        {
-            //SETTING THE SPAWN POSITION. PLAYER WILL ALWAYS SPAWN
-            map[row][column] = arr[row][column];
-            if (arr[row][column]== 3) {
-                x = column * 16;
-                y = row * 16;
-                pc->SetPositionVec({static_cast<float>(x), static_cast<float>(y)});
-            }
-
-        }
-    }*/
 
     for (int row = 0; row < 20; row++) {
         for (int column = 0; column < 25; column++) {
@@ -105,14 +88,6 @@ void Map::DrawMap() {
 
                     break;
 
-/*
-                case 3:
-                    DrawTextureRec(Spawn, T_StartRec, {(float) x, (float) y}, WHITE);
-
-                    T_StartRec.x = (float) currentStartFrame * (float) T_map.width / 23;
-
-                    break;*/
-
                 case 2:
                     DrawTexture(Tree, (float) x, (float) y, WHITE);
 
@@ -124,6 +99,7 @@ void Map::DrawMap() {
                }
         }
     }
+    //Drawing the Goal and the Spawn
     DrawTexture(Goal, goalrec.x, goalrec.y, WHITE);
     DrawTextureRec(Spawn, T_StartRec, {T_StartRec.x, T_StartRec.y}, WHITE);
 
@@ -145,6 +121,7 @@ void Map::DrawMap() {
         spamton->Draw();
     }
 
+    //All the Other functions are set here.
     pc->Update();
     pc->Draw();
     Collision();
@@ -155,23 +132,19 @@ void Map::DrawMap() {
 
 void Map::Collision() {
 
-    if (IsKeyPressed(KEY_R)){
-        std::cout << pc->GetPlayerRectangle().y;
-    }
 //SETTING THE COLLISIONS IN A BOOL VARIABLE TO MAKE THE TYPING EASIER
     Rectangle playerrectangle = pc->GetPlayerRectangle();
     wallCollision = CheckCollisionRecs(border1, playerrectangle);
     wallCollision2 = CheckCollisionRecs(border2, playerrectangle);
     wallCollision3 = CheckCollisionRecs(border3, playerrectangle);
     wallCollision4 = CheckCollisionRecs(border4, playerrectangle);
+    GoalCollision = CheckCollisionRecs(goalrec, playerrectangle);
     StoneCollision = false;
     for (int i = 0; i < stonerecc.size(); i++){
         if (CheckCollisionRecs(stonerecc[i], playerrectangle)) {
             StoneCollision = true;
         }
     }
-    GoalCollision = CheckCollisionRecs(goalrec, playerrectangle);
-
     //THIS IS WHERE THE COLLISIONS BETWEEN PLAYER AND OBJECT IS SET
     if (wallCollision){pc->Collision(); }
     if (wallCollision2){pc->Collision(); }
@@ -183,6 +156,7 @@ void Map::Collision() {
     //ADDING THE ITEMS IN THE INVENTORY ARRAY
     if (water->Active) {
         if (CheckCollisionRecs(pc->GetPlayerRectangle(), water->getRec())) {
+            //This gives the Player the option to collect the item, if he Collides with the object.
             DrawText("[ F ]", pc->GetPlayerRectangle().x - 2, pc->GetPlayerRectangle().y - 10, 1, BLACK);
             if(IsKeyPressed(KEY_F)) {
                 water->Active = false;

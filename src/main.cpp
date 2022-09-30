@@ -24,7 +24,6 @@ int main() {
     // ...
     // ...
     std::unique_ptr<Map> tilemap = std::make_unique<Map>();
-    Inventory<ItemBase> inventory;
 
     // Camera settings
     //--------------------------------------------------------------------------------------------
@@ -40,6 +39,8 @@ int main() {
         // ...
         // ...
 
+        //NOW IF THAT ISN'T A CLEAN AND UNTOUCHED MAIN.CPP
+        // AT LEAST I KEEP MY PROMISE TO NOT MAKE IT LOOK LIKE PROJECT 2
         BeginDrawing();
 
         BeginMode2D(camera);

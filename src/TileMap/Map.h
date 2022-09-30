@@ -19,6 +19,7 @@ public:
 
     //Constructor
     Map();
+    //And here are the shared pointers and the Unique ones (BADUM TCH!!!)
     std::unique_ptr<Char> pc = std::make_unique<PC>();
     std::shared_ptr<Water> water = std::make_shared<Water>();
     std::shared_ptr<Chilli> chilli = std::make_shared<Chilli>();
@@ -33,7 +34,6 @@ public:
     void Collision();
 
 private:
-    int random();
     Inventory<ItemBase> inventory;
     //x and y position for the Arrays
     int x{}, y{};
@@ -73,9 +73,7 @@ private:
     //Stone
     std::vector<Rectangle> stonerecc = {};
 
-
-    int r = rand()%2;
-
+    //The Border Rectangles, The Player cannot go outside of the Map.
     Rectangle border1 = {0, 320, 400, 16};
     Rectangle border2 = {0, 0, 16, 320};
     Rectangle border3 = {-16, -16, 410, 16};

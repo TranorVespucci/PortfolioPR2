@@ -274,7 +274,6 @@ if (content.empty() == false) {
         return inventoryDrawActive;
     }
 
-
     ~Inventory()
     {
         delete water;
@@ -296,7 +295,10 @@ private:
     std::vector<I> Weapon;
     bool inventoryDrawActive = false;
     std::vector<I> content;
-    int MaxSize = 10;
+    //At the End, the MaxSize of the Inventory can be set here
+    //little Note here, the Items can still be collected, yet aren't registered in the Inventory or the Array,
+    //They Dissapear
+    int MaxSize = 5;
     int inventoryweight = 0;
     Texture2D spr_inventory = LoadTexture("assets/graphics/spr_inventory.png");
 };
